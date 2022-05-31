@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="UTF-8" />
+  <title>Cards</title>
+  <link rel="stylesheet" type="addUser/css" th:href="@{/static/style.css}" />
+  
+  </head>
+  <body>
+  		<div class="button_buy ">
+        <label for="buy_button">BUY</label> 
+        <input type="button" id="cancel_button" onclick=""> 
+        </div>
+        
+         <div class="button_sell ">
+        <label for="sell_button">SELL</label> 
+        <input type="button" id="sell_button" onclick=""> 
+        </div>
+        
+        <div class="button_play ">
+        <label for="play_button">PLAY</label> 
+        <input type="button" id="play_button" onclick=""> 
+        </div>
+   
+   		<div>
+   		<h1 th:text="${name}"></h1>
+   		</div>
+  </body>
+  
+   <script src="js/cards.js"></script> 
+  
+  </html>

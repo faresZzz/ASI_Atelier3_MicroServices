@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="UTF-8" />
+  <title>Log in</title>
+  <link rel="stylesheet" type="addUser/css" th:href="@{/static/style.css}" />
+  
+  </head>
+  <body>
+  
+<div class="general">
+    <form action="/addUser" method="post" id="sign_up_form" autocomplete="off">
+
+
+        <div class="userSurname ">
+            <label for="userSurname_input">Surname</label> 
+            <input type="text" id="userSurname_input"> 
+          </div>
+
+          <div class="password ">
+            <label for="userPassword_input">Password</label> 
+            <input type="password" id="userPassword_input"> 
+          </div>
+
+           <div class="button_cancel ">
+        <label for="cancel_button"></label> 
+        <input type="reset" id="cancel_button"> 
+        </div>
+        
+         <div class="button_submit ">
+        <label for="submit_button">OK</label> 
+        <input type="button" id="submit_button" onclick="send_log()"> 
+        </div>
+      
+
+
+    </form>
+
+
+</div>
+  
+  
+ 
+ <script src="js/connexion.js"></script> 
+  
+
+  
+  
+  </body>
+  
+  </html>
