@@ -53,24 +53,19 @@ public class Comm {
 		RestTemplate restTemplate = new RestTemplate();	
 
 		// Send request with PUT method.
-		restTemplate.put(URLCARD_SERVICE + "/update/"+card.getId(), card);
+		restTemplate.put(URLCARD_SERVICE + "update/"+card.getId(), card);
 	}
 	
-	public static UserDto updateUser(UserDto user)
+	public static void updateUser(UserDto user)
 	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Accept", MediaType.APPLICATION_XML_VALUE);
-		headers.setContentType(MediaType.APPLICATION_XML);
-
+		
 		RestTemplate restTemplate = new RestTemplate();
 
 		// Data attached to the request.
-		HttpEntity<UserDto> requestBody = new HttpEntity<>(user, headers);
-
-		// Send request with POST method.
-		UserDto newUser = restTemplate.patchForObject(URLUSER_SERVICE + "update", requestBody, UserDto.class);
 		
-		return newUser;
+		// Send request with PUT method.
+		restTemplate.put(URLUSER_SERVICE + "update/" + user.getId(), UserDto.class);
+		
 	}
 
 	
