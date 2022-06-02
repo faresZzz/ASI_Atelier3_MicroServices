@@ -24,7 +24,7 @@ public class CardService {
 	{
 		CardDto cardDto = new CardDto(card.getId(), card.getPrice(), card.getName(), card.getDescription(), card.getImgUrl(), card.getFamily(), card.getAffinity(), card.getHp(), card.getEnergy(), card.getAttack()
 				, card.getDefence(), card.getOwnerId(), card.isOnMarket());
-		BeanUtils.copyProperties(card, cardDto);
+//		BeanUtils.copyProperties(card, cardDto);
 		
 		
 		return cardDto;
@@ -35,7 +35,7 @@ public class CardService {
 	{
 		Card card = new Card(cardDto.getId(), cardDto.getPrice(), cardDto.getName(),  cardDto.getDescription(), cardDto.getImgUrl(), cardDto.getFamily(), cardDto.getAffinity(), cardDto.getHp(), cardDto.getEnergy(), cardDto.getAttack(), 
 				cardDto.getDefence(), cardDto.isOnMarket());
-		BeanUtils.copyProperties(cardDto, card);
+//		BeanUtils.copyProperties(cardDto, card);
 		return card;
 
 	}

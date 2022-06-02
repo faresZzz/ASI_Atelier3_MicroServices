@@ -7,38 +7,47 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.model.CardDto;
+import com.model.ListCardDtoWrapper;
 import com.sp.service.TransactionService;
 
 
 @RestController
+@RequestMapping("/market")
 public class TransactionRestCrt {
 	
 	@Autowired
 	TransactionService tService;
 	
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/sellCard/{cardId}/{price}")
-	public List<CardDto> sellCard(@PathVariable String cardId , @PathVariable String price,  @RequestBody String param) {
+	@RequestMapping(method = RequestMethod.PUT, value = "/sellCard/{cardId}/{userId}")
+	public boolean sellCard(@PathVariable String cardId , @PathVariable String userId, @RequestParam String price) {
 		
-		return tService.sellCard(Integer.valueOf(cardId) , Integer.valueOf(price), 1);
+		return tService.sellCard(Integer.valueOf(cardId) , Integer.valueOf(price), Integer.valueOf(userId));
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/buyCard/{buyerId}/{cardId}")
-	public void buyCard(@PathVariable String buyerId, @PathVariable String cardId) {
-		tService.buyCard(Integer.valueOf(buyerId), Integer.valueOf(cardId));
+	public boolean buyCard(@PathVariable String buyerId, @PathVariable String cardId) {
+		return tService.buyCard(Integer.valueOf(buyerId), Integer.valueOf(cardId));
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/sell/{userId}")
-	public List<CardDto> displaySellMarket(@PathVariable String userId) {
-		return tService.displaySellMarket(Integer.valueOf(userId));
+	public ListCardDtoWrapper displaySellMarket(@PathVariable String userId) {
+		ListCardDtoWrapper listSellCard = new ListCardDtoWrapper();
+		listSellCard.setListCard( tService.displaySellMarket(Integer.valueOf(userId)));
+		
+		return listSellCard;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/buy/{userId}")
-	public List<CardDto> displayBuyMarket(@PathVariable String userId) {
-		return tService.displayBuyMarket(Integer.valueOf(userId));
+	@RequestMapping(method = RequestMethod.GET, value = "/buy")
+	public ListCardDtoWrapper displayBuyMarket() {
+		ListCardDtoWrapper listBuyCard = new ListCardDtoWrapper();
+		listBuyCard.setListCard( tService.displayBuyMarket());
+		
+		return listBuyCard;
 	}
 
 }

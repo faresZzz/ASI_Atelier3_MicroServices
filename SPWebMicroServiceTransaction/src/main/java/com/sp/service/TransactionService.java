@@ -22,7 +22,7 @@ public class TransactionService {
 	@Autowired
 	TransactionRepository tRepository;
 	
-	public List<CardDto> sellCard(int cardId, int priceOnMarket, int userConnectId)
+	public boolean sellCard(int cardId, int priceOnMarket, int userConnectId)
 	{
 		// mise en vente de la carte sur le market
 		CardDto c = Comm.getCardById(cardId);
@@ -35,14 +35,15 @@ public class TransactionService {
 			
 			// update de la carte dans la DB
 			Comm.updateCard(c);
+			return true;
 		}
 		
-		return Comm.getCardsByUser(userConnectId);
+		return false;
 	}
 	
 	
 
-	public void buyCard(int buyerId, int cardId)
+	public boolean buyCard(int buyerId, int cardId)
 	{
 		// recuperation de la carte
 		
@@ -79,9 +80,12 @@ public class TransactionService {
 				System.out.println(buyCard);
 				System.out.println(buyer);
 				System.out.println(seller);
+				
+				return true; 
 			
 			}
 		}
+		return false;
 		
 	}
 
@@ -99,7 +103,7 @@ public class TransactionService {
 
 
 
-	public List<CardDto> displayBuyMarket(Integer valueOf) {
+	public List<CardDto> displayBuyMarket() {
 
 		return Comm.getCardOnMarket();
 		

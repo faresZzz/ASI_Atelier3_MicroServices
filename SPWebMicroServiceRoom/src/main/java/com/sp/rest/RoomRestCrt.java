@@ -16,6 +16,7 @@ import com.sp.service.RoomService;
 
 
 @RestController
+@RequestMapping("/room")
 public class RoomRestCrt {
 	
 	
@@ -23,28 +24,28 @@ public class RoomRestCrt {
 	RoomService rService;
 	
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/room")
+	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public List<Room> displayRoom() {
 		System.out.println("Menu Room");
 		return rService.displayRoom();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/room/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public Room getRoomById(@PathVariable String id) {
 		return rService.getRoomById(Integer.valueOf(id));
 	}
 	
 	
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/room/newRoom/{player1Id}")
+	@RequestMapping(method = RequestMethod.POST, value = "/newRoom/{player1Id}")
 	public Room newRoom(@RequestBody Room room, @PathVariable String player1Id)
 	{
 		return rService.newRoom(room, Integer.valueOf(player1Id));
 	
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/room/join")
-	public Room joinRoom(@RequestParam String idRoom, @RequestParam String idPlayer)
+	@RequestMapping(method = RequestMethod.PUT, value = "/join/{idRoom}")
+	public Room joinRoom(@PathVariable String idRoom, @RequestParam String idPlayer)
 	{
 		if (idRoom != null && idPlayer != null)
 		{
@@ -54,22 +55,22 @@ public class RoomRestCrt {
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/room/start/{idRoom}")
+	@RequestMapping(method = RequestMethod.PUT, value = "/start/{idRoom}")
 	public Room joinRoom(@PathVariable String idRoom, @RequestBody ListCardDtoWrapper listCard)
 	{
-		return rService.startGame(idRoom, listCard);
+		return rService.startGame(Integer.valueOf(idRoom), listCard);
 	}
 	
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/room/endOfGame")
-	public int endOfGame(@RequestParam String idRoom, @RequestParam String Winner)
+	@RequestMapping(method = RequestMethod.PUT, value = "/endOfGame/{idRoom}")
+	public boolean endOfGame(@PathVariable String idRoom, @RequestParam String Winner)
 	{
 		if (idRoom != null && Winner != null)
 		{
 			return rService.endOfGame(Integer.valueOf(idRoom), Integer.valueOf(Winner));
 		}
 		
-		return (Integer) null;
+		return false;
 	}
 
 

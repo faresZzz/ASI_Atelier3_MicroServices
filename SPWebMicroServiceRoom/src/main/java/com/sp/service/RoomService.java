@@ -104,7 +104,7 @@ public class RoomService {
 	}
 
 	
-	public int endOfGame(Integer idRoom, Integer winnerPlace) 
+	public boolean endOfGame(Integer idRoom, Integer winnerId) 
 	{
 		Room roomPlayed = null;
 		for (Room room  : this.fullRoom)
@@ -119,13 +119,13 @@ public class RoomService {
 		{	
 			UserDto winner = null;
 			UserDto loser = null;
-			if (winnerPlace == 1)
+			if (winnerId == roomPlayed.getPlayer1Id())
 			{
 				
 				winner = roomPlayed.getPlayer1();
 				loser = roomPlayed.getPlayer2();
 			}
-			else if (winnerPlace == 2)
+			else if (winnerId == roomPlayed.getPlayer2Id())
 			{
 				winner = roomPlayed.getPlayer2();
 				loser = roomPlayed.getPlayer1();
@@ -145,9 +145,10 @@ public class RoomService {
 			Comm.updatePlayer(loser);
 			Comm.updateCard(card1);
 			Comm.updateCard(card2);
+			return true;
 		}
 		
-		return 0;
+		return false;
 	}
 
 	public Room getRoomById(Integer idRoom) {

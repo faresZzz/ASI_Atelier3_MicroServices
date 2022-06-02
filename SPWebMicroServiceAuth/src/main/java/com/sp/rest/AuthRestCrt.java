@@ -22,7 +22,16 @@ public class AuthRestCrt {
 	@Autowired
 	AuthService aService;
 	
-	
+	@RequestMapping(method = RequestMethod.GET, value = "/")
+	public String indexDisplay() {
+		return " <h1> Bonjour vous etes bien sur la page d'accueil </h1>";
+	}
+	/**
+	 * 
+	 * @param userDto
+	 * @return User id
+	 * @throws FunctionnnalException
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/login")
 	public int login(@RequestBody UserDto userDto) throws FunctionnnalException {
 		try {
@@ -33,6 +42,12 @@ public class AuthRestCrt {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param userDto
+	 * @return User id
+	 * @throws FunctionnnalException
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/signIn")
 	public int signIn(@RequestBody UserDto userDto) throws FunctionnnalException
 	{

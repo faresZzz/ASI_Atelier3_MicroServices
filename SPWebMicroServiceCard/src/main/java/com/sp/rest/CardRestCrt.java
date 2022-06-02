@@ -15,20 +15,21 @@ import com.sp.service.CardService;
 
 
 @RestController
+@RequestMapping("/card")
 public class CardRestCrt {
 
 
 	@Autowired
 	CardService cService;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/card/createCard")
+	@RequestMapping(method = RequestMethod.POST, value = "/createCard")
 	public CardDto addCard(@RequestBody CardDto card) {
 		CardDto newCard = cService.addCard(card);
 
 		return newCard;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/card/cards")
+	@RequestMapping(method = RequestMethod.GET, value = "/cards")
 	public ListCardDtoWrapper getAllCards() {
 		List<CardDto> cards = cService.getAllCards();
 		ListCardDtoWrapper listCard = new ListCardDtoWrapper();
@@ -36,13 +37,13 @@ public class CardRestCrt {
 		return listCard;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/card/getCard/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/getCard/{id}")
 	public CardDto getCard(@PathVariable String id) {
 		CardDto card = cService.getCard(Integer.valueOf(id));
 		return card;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/card/getCardByOwner/{ownerId}")
+	@RequestMapping(method = RequestMethod.GET, value = "/getCardByOwner/{ownerId}")
 	public ListCardDtoWrapper getCardByOwner(@PathVariable Integer ownerId)
 	{
 		ListCardDtoWrapper listCard = new ListCardDtoWrapper();
@@ -50,13 +51,18 @@ public class CardRestCrt {
 		return listCard;
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/card/update/{id}")
-	public void update(@PathVariable String id, @RequestBody CardDto card)
+	@RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
+	public boolean update(@PathVariable String id, @RequestBody CardDto card)
 	{
-		cService.update(Integer.valueOf(id), card);
+		if (cService.update(Integer.valueOf(id), card) != null)
+		{
+			return true;
+		}
+		return false;
+		
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/card/randcard/{n}")
+	@RequestMapping(method = RequestMethod.GET, value = "/randcard/{n}")
 	public ListCardDtoWrapper getRandCard(@PathVariable String n)
 	{
 		ListCardDtoWrapper listCard = new ListCardDtoWrapper();
@@ -66,7 +72,7 @@ public class CardRestCrt {
 		return listCard;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/card/onMarket")
+	@RequestMapping(method = RequestMethod.GET, value = "/onMarket")
 	public ListCardDtoWrapper getCardsOnMarket()
 	{
 		ListCardDtoWrapper listCard = new ListCardDtoWrapper();

@@ -11,9 +11,13 @@ import com.sp.tools.Comm;
 public class AuthService {
 	
 	
-	
-	public int login(UserDto u) throws FunctionnnalException {
-		System.out.println("J entre");
+	/**
+	 * 
+	 * @param UserDto 
+	 * @return User id
+	 * @throws FunctionnnalException
+	 */
+	public Integer login(UserDto u) throws FunctionnnalException {
 		if (checkUser(u)) {
 			throw new FunctionnnalException(" Nom introuvable ");
 		}
@@ -31,11 +35,21 @@ public class AuthService {
 	}
 		
 		
-	
+	/**
+	 * 
+	 * @param UserDto
+	 * @return bool True si l'utilistaeur n'existe pas deja dans la base
+	 */
 	private boolean checkUser(UserDto u) {
 		return Comm.getUserBySurname(u.getSurname()) == null;
 	}
 	
+	/**
+	 * 
+	 * @param UserDto
+	 * @return User id
+	 * @throws FunctionnnalException
+	 */
 	public Integer addUser(UserDto u) throws FunctionnnalException {
 		if (!checkUser(u)) {
 			throw new FunctionnnalException(" Surnom deja utilisé ");
