@@ -99,4 +99,8 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
   # LUPPI Daniel
   Nous avons mis en place des 'rooms' afin d'héberger les compétitions de cartes. L'utilateur peut choisir parmis une multitude de room ayant chacune un nom et un enjeux (une mise). Deux joueurs se retrouvent alors dans la room pour s'affronter. Ils doivent chacun choisir une carte qui s'affronteront selon leur point d'attaque, point de défense ainsi que de l'affinité. Cette partie n'est malheureusement pas encore completement opérationnelle.
   
- 
+ # Elements non-réalisés du cahier des charges
+  ## SONAR
+  Comme expliqué dans le fichier rendu au format PDF dans la sous-partie 'Batterie de tests réalisée', nous n'avons malheureusement pas abouti dans la mise en place de SONAR pour une vérification de code. 
+  ## ROOMS
+  La gestion des rooms afin d'heberger des combats entre deux utilisateurs n'a pas été achevée. Une bonne partie des fonctionnalités implémentées sont opérationnelles mais certaines sont encore incomplète. 
