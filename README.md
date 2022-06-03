@@ -101,8 +101,8 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
   
  # Elements non-réalisés du cahier des charges
   ## SONAR
-  Comme expliqué dans le fichier rendu au format PDF dans la sous-partie 'Batterie de tests réalisée', nous n'avons malheureusement pas abouti dans la mise en place de SONAR pour une vérification de code. 
+  Comme expliqué dans le fichier rendu au format PDF dans la sous-partie 'Batterie de tests réalisés', nous n'avons malheureusement pas abouti dans la mise en place de SONAR pour une vérification de code. 
   ## ROOMS
-  La gestion des rooms afin d'heberger des combats entre deux utilisateurs n'a pas été achevée. Une bonne partie des fonctionnalités implémentées sont opérationnelles mais certaines sont encore incomplète. 
+  La gestion des rooms afin d'heberger des combats entre deux utilisateurs n'a pas été achevée. Une bonne partie des fonctionnalités implémentées sont opérationnelles mais certaines sont encore incomplètes. 
   ## Front
-  N'ous n'avons pas eu le temps de mettre en place un CSS de qualité afin de rendre le sit plus esthetique. Nous avons préféré garder cette partie pour la fin car nous la jugions moins importante que le reste. Ainsi, nous pouvons présenter un projet fonctionnel qui cependant n'est pas mis en forme.
+  Nous n'avons pas eu le temps de mettre en place un CSS de qualité afin de rendre le site plus esthetique. Nous avons préféré garder cette partie pour la fin car nous la jugions moins importante que le reste. Ainsi, nous pouvons présenter un projet fonctionnel qui cependant n'est pas mis en forme.
