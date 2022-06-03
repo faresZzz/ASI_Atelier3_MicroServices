@@ -97,5 +97,6 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
   #CHOURAQUI Maxime
   L'achat et vente de carte a été réalisée. Nou savons mis en place un 'Market' permettant à un utilisateur de pouvoir mettre à jour sa collection de carte. Chaque utilisateur possede un nombre d'argent lui permettant l'ajout de carte à sa collection. Celui- ci peut aussi décider de vendre et ainsi récupérer de l'arget sur son compte.
   #LUPPI Daniel
+  Nous avons mis en place des 'rooms' afin d'héberger les compétitions de cartes.
   
  
