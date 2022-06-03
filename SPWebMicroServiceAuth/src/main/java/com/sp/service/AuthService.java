@@ -54,10 +54,7 @@ public class AuthService {
 		if (!checkUser(u)) {
 			throw new FunctionnnalException(" Surnom deja utilisé ");
 		}
-		
-		UserDto user = new UserDto();
-		BeanUtils.copyProperties(user, u);
-		UserDto createdUser=Comm.createUser(user);
+		UserDto createdUser=Comm.createUser(u);
 		return createdUser.getId();
 	}
 	

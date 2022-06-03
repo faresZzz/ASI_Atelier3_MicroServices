@@ -41,17 +41,12 @@ public class Comm {
 	
 	public static UserDto createUser(UserDto user)
 	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Accept", MediaType.APPLICATION_XML_VALUE);
-		headers.setContentType(MediaType.APPLICATION_XML);
 
 		RestTemplate restTemplate = new RestTemplate();
 
-		// Data attached to the request.
-		HttpEntity<UserDto> requestBody = new HttpEntity<>(user, headers);
 
 		// Send request with POST method.
-		UserDto newUser = restTemplate.postForObject(URLUSER_SERVICE + "createUser", requestBody, UserDto.class);
+		UserDto newUser = restTemplate.postForObject(URLUSER_SERVICE + "createUser", user, UserDto.class);
 		
 		return newUser;
 	}
