@@ -54,6 +54,7 @@ public class AuthService {
 		if (!checkUser(u)) {
 			throw new FunctionnnalException(" Surnom deja utilisé ");
 		}
+		System.out.println("je suis la ");
 		UserDto createdUser=Comm.createUser(u);
 		return createdUser.getId();
 	}

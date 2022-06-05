@@ -37,7 +37,7 @@ public class Card {
 	
 
 	public Card(int id,  int value, String name, String description, String imgUrl, String family, String affinity, int hp,
-			int energy, int attack, int defence, boolean onMarket) {
+			int energy, int attack, int defence, boolean onMarket,int  ownerId) {
 
 		this.id = id;
 		this.name = name;
@@ -51,8 +51,9 @@ public class Card {
 		this.defence = defence;
 		this.onMarket = onMarket;
 		this.price = value;
-		this.ownerId = 0;
+		this.ownerId = ownerId;
 	}
+	
 	
 	public Card() {
 		// TODO Auto-generated constructor stub

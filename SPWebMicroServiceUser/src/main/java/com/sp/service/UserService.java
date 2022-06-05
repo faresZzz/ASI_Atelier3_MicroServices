@@ -56,7 +56,8 @@ public class UserService {
 			Comm.updateCard(card);
 		}
 //		System.out.println(listCardId);
-		createdUser.setCardListId(listCardId);;
+		createdUser.setCardListId(listCardId);
+		createdUser.setBank(1000);
 		System.out.println(createdUser);
 		// update de l'utilisateur dans la base avec ca liste de cartes
 		return this.userToUserDto(userRepository.save(createdUser));

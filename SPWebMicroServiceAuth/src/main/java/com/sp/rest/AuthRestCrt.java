@@ -2,6 +2,7 @@ package com.sp.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +49,7 @@ public class AuthRestCrt {
 	 * @return User id
 	 * @throws FunctionnnalException
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "/signIn")
+	@RequestMapping(method = RequestMethod.POST, value = "/signin")
 	public int signIn(@RequestBody UserDto userDto) throws FunctionnnalException
 	{
 		try {

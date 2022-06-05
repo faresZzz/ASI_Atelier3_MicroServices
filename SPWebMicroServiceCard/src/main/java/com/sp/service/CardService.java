@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.model.CardDto;
 import com.sp.model.Card;
 import com.sp.repository.CardRepository;
+import com.sp.tools.CardFactory;
 
 
 @Service
@@ -34,7 +35,7 @@ public class CardService {
 	private Card cardDtoToCard(CardDto cardDto)
 	{
 		Card card = new Card(cardDto.getId(), cardDto.getPrice(), cardDto.getName(),  cardDto.getDescription(), cardDto.getImgUrl(), cardDto.getFamily(), cardDto.getAffinity(), cardDto.getHp(), cardDto.getEnergy(), cardDto.getAttack(), 
-				cardDto.getDefence(), cardDto.isOnMarket());
+				cardDto.getDefence(), cardDto.isOnMarket(), cardDto.getOwnerId());
 //		BeanUtils.copyProperties(cardDto, card);
 		return card;
 
@@ -79,14 +80,14 @@ public class CardService {
 				Random randomGenerator = new Random();
 				int index=randomGenerator.nextInt(cardsList.size());
 				listRandomCard.add( this.cardToCardDto(cardsList.get(index)) );  // return the converted version of the random card choosed 
-				
+				cardsList.remove(index);
 			}
 			
 			return listRandomCard;
 		}
 		else
 		{
-			this.addCard(new CardDto());
+			this.addCard(CardFactory.createCardRandomCard());
 			return this.getRandomCard(n);
 		}
 		

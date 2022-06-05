@@ -30,7 +30,7 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
 | :-----------: |   :-----------:   |   :-----------:   |   :-----------:       |
 |   GET         |       /           |    " "            |   String              |
 |   GET         |       /login      |    UserDto        |   int                 |
-|   POST        |       /singIn     |    UserDto        |   int                 |
+|   POST        |       /singin     |    UserDto        |   int                 |
 
 
 
