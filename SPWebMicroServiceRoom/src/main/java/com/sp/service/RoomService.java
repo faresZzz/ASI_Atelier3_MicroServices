@@ -19,9 +19,17 @@ public class RoomService {
 	private List<Room> availableRoom = new ArrayList<Room>();
 	private List<Room> fullRoom = new ArrayList<Room>();
 	
-	public List<Room> displayRoom()
+	public List<Room> displayRoom( int userId)
 	{
-		return this.availableRoom;
+		List<Room> playableRoom = new ArrayList<Room>();
+		for (Room room : this.availableRoom)
+		{
+			if (room.getPlayer1Id() != userId)
+			{
+				playableRoom.add(room);
+			}
+		}
+		return playableRoom;
 	}
 	
 	public Room newRoom(Room room, int player1Id)
@@ -29,7 +37,7 @@ public class RoomService {
 		room.setPlayer1Id(player1Id);
 		room.setFull(false);
 		this.availableRoom.add(room);
-		
+		System.out.println(this.availableRoom);
 		return room;
 	}
 
@@ -75,7 +83,7 @@ public class RoomService {
 				
 	}
 	
-	public Room startGame(int idRoom, ListCardDtoWrapper listCard)
+	public Room startGame(int idRoom, int cardPlayerId, int playerId)
 	{
 		Room roomStart = null;
 		for (Room room  : this.fullRoom)
@@ -87,18 +95,21 @@ public class RoomService {
 			}
 		}
 		
-		CardDto cardPlayer1 = listCard.getListCard().get(0);
-		CardDto cardPlayer2 = listCard.getListCard().get(0);
-		
-		if (cardPlayer1.getEnergy() >= 20)
+		CardDto cardPlayer = Comm.getCard(cardPlayerId);
+		if (cardPlayer.getEnergy() >= 20)
 		{
-			roomStart.setCardPlayer1(cardPlayer1);
+			if (playerId == roomStart.getPlayer1Id())
+			{
+				roomStart.setCardPlayer1(cardPlayer);
+				
+			}
+			else if (playerId == roomStart.getPlayer2Id())
+			{
+				
+				roomStart.setCardPlayer2(cardPlayer);
+			}
 		}
 		
-		if (cardPlayer2.getEnergy() >= 20)
-		{
-			roomStart.setCardPlayer2(cardPlayer2);
-		}
 		
 		return roomStart;
 	}
@@ -131,8 +142,8 @@ public class RoomService {
 				loser = roomPlayed.getPlayer1();
 			}
 			
-			winner.setBank( winner.getBank() + roomPlayed.getBet());
-			loser.setBank(loser.getBank() - roomPlayed.getBet());
+			winner.setBank( winner.getBank() + roomPlayed.getBet()/2);
+			loser.setBank(loser.getBank() - roomPlayed.getBet()/2);
 			
 			
 			CardDto card1 = roomPlayed.getCardPlayer1();
@@ -145,6 +156,7 @@ public class RoomService {
 			Comm.updatePlayer(loser);
 			Comm.updateCard(card1);
 			Comm.updateCard(card2);
+			System.out.println("Fin de partie room: " + idRoom + " le joueur " + winnerId + "a gagne" );
 			return true;
 		}
 		

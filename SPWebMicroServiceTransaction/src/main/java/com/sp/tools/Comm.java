@@ -64,7 +64,7 @@ public class Comm {
 		// Data attached to the request.
 		
 		// Send request with PUT method.
-		restTemplate.put(URLUSER_SERVICE + "update/" + user.getId(), UserDto.class);
+		restTemplate.put(URLUSER_SERVICE + "update/" + user.getId(), user);
 		
 	}
 
@@ -77,10 +77,18 @@ public class Comm {
 		return wrapper.getListCard();
 	}
 
-	public static List<CardDto> getCardOnMarket() {
+	public static List<CardDto> getCardOnMarket(int userId) {
 		RestTemplate restTemplate = new RestTemplate();
 		
-		ListCardDtoWrapper wrapper =  restTemplate.getForObject(URLCARD_SERVICE + "/onMarket" , ListCardDtoWrapper.class);
+		ListCardDtoWrapper wrapper =  restTemplate.getForObject(URLCARD_SERVICE + "/onMarket/" + userId , ListCardDtoWrapper.class);
+		
+		return wrapper.getListCard();
+	}
+
+	public static List<CardDto> getCardsToSell(Integer userId) {
+RestTemplate restTemplate = new RestTemplate();
+		
+		ListCardDtoWrapper wrapper = restTemplate.getForObject(URLCARD_SERVICE + "/cardToSell/" + userId, ListCardDtoWrapper.class);
 		
 		return wrapper.getListCard();
 	}

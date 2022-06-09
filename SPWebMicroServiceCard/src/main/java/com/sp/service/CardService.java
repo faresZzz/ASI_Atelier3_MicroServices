@@ -114,14 +114,32 @@ public class CardService {
 		
 	}
 
-	public List<CardDto> getCardOnMarket() {
+	public List<CardDto> getCardOnMarket(int userId) {
 		
 		List<Card> cardsOnMarket = cardRepository.findByOnMarketTrue();
 		List<CardDto> cardsDto = new ArrayList<CardDto>();
 		
 		for (Card card : cardsOnMarket)
 		{
-			cardsDto.add(this.cardToCardDto(card));
+			if (card.getOwnerId() != userId)
+			{
+				cardsDto.add(this.cardToCardDto(card));				
+			}
+		}
+		return cardsDto;
+	}
+	
+	public List<CardDto> getCardToSell(int userId) {
+		
+		List<Card> cardsOnMarket = cardRepository.findByOwnerId(userId);
+		List<CardDto> cardsDto = new ArrayList<CardDto>();
+		
+		for (Card card : cardsOnMarket)
+		{
+			if (!card.isOnMarket())
+			{
+				cardsDto.add(this.cardToCardDto(card));				
+			}
 		}
 		return cardsDto;
 	}

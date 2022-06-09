@@ -17,6 +17,7 @@ import com.sp.service.AuthService;
 
 
 @RestController
+@CrossOrigin
 public class AuthRestCrt {
 	
 	
@@ -33,7 +34,7 @@ public class AuthRestCrt {
 	 * @return User id
 	 * @throws FunctionnnalException
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/login")
+	@RequestMapping(method = RequestMethod.POST, value = "/login")
 	public int login(@RequestBody UserDto userDto) throws FunctionnnalException {
 		try {
 			return aService.login(userDto);

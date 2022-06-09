@@ -3,6 +3,7 @@ package com.sp.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.sp.service.CardService;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/card")
 public class CardRestCrt {
 
@@ -72,12 +74,19 @@ public class CardRestCrt {
 		return listCard;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/onMarket")
-	public ListCardDtoWrapper getCardsOnMarket()
+	@RequestMapping(method = RequestMethod.GET, value = "/onMarket/{userId}")
+	public ListCardDtoWrapper getCardsOnMarket(@PathVariable String userId)
 	{
 		ListCardDtoWrapper listCard = new ListCardDtoWrapper();
-		listCard.setListCard(cService.getCardOnMarket());
+		listCard.setListCard(cService.getCardOnMarket(Integer.valueOf(userId)));
 		return listCard;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "/cardToSell/{userId}")
+	public ListCardDtoWrapper getCardsToSell(@PathVariable String userId)
+	{
+		ListCardDtoWrapper listCard = new ListCardDtoWrapper();
+		listCard.setListCard(cService.getCardToSell(Integer.valueOf(userId)));
+		return listCard;
+	}
 }

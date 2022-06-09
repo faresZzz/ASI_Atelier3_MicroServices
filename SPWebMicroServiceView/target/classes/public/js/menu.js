@@ -1,6 +1,6 @@
 
 function market(action)
 {
-  localStorage.setItem("action", action)
+  sessionStorage.setItem("action", action)
   window.location = "market.html"
 }

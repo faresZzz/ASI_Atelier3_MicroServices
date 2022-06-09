@@ -2,12 +2,12 @@ package com.sp.tools;
 
 
 public enum CardImage {
-	Flippy("Flippy", "https://static.wikia.nocookie.net/happytreefriends/images/9/9e/FlippyTraumatizedScreamHS33.png/revision/latest?cb=20190106223343"),
-	Lumpy("Lumpy", "https://static.wikia.nocookie.net/happytreefriends/images/3/39/Cdahtfcalendar3.jpg/revision/latest?cb=20110507082152"), 
+	Flippy("Flippy", "https://img2.freepng.fr/20180824/tvt/kisspng-flippy-giggles-cro-marmot-image-art-happy-tree-friends-ale-bing-images-5b8038eeb775b5.5301884315351298387515.jpg"),
+	Lumpy("Lumpy", "http://pm1.narvii.com/6341/da6bd3c08d3c7c5556ba15b7101547d5275acf3a_00.jpg"), 
 	MrPickles("MrPickles", "https://static.wikia.nocookie.net/happytreefriends/images/0/01/S3E17_Picklehop.png/revision/latest/scale-to-width-down/1000?cb=20160326142145"),
-	Lifty("Lifty", "https://static.wikia.nocookie.net/happytreefriends/images/7/7e/LiftyProfile.png/revision/latest?cb=20170616160329"), 
-	Shifty("Shifty", "https://static.wikia.nocookie.net/happytreefriends/images/8/8f/Gallery_01_11.png/revision/latest?cb=20130113035357"), 
-	CroMarmot("CroMarmot", "https://static.wikia.nocookie.net/happytreefriends/images/0/04/Cro-Marmot-NOICE.png/revision/latest?cb=20200524202259"), 
+	Lifty("Lifty", "https://cosplayfu-website.s3.amazonaws.com/_Photo/character/mini/18216_12101.jpg"), 
+	Shifty("Shifty", "https://cosplayfu-website.s3.amazonaws.com/_Photo/character/mini/18217_12100.jpg"), 
+	CroMarmot("CroMarmot", "https://i.skyrock.net/8451/44118451/pics/1779113410.gif"), 
 	SuperMan("Superman", "https://www.comicsplace.net/wp-content/uploads/2018/01/AC_1000.jpg"),
 	BatMan("Batman", "https://www.batman-legend.com/wp-content/uploads/2017/05/Batman-POCLCB.jpg"),
 	Aquaman("Aquaman", "https://www.urban-comics.com/wp-content/uploads/2018/09/aquaman1-1-1024x642.jpg"),

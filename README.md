@@ -7,7 +7,9 @@ CLEMENT Charles<br>
 LUPPI Daniel<br>
 
 
+## video de presentation
 
+Lien vers notre vidéo [Voir](https://www.youtube.com/watch?v=ECCESElyfo4)
 
 ## Ports d'ecoute de nos micros services
 
@@ -16,10 +18,12 @@ LUPPI Daniel<br>
 - authentification : 3082
 - transaction : 3083
 - room : 3084
+- vue : 3085
 - nginx : 8080
 
 Tous nos services sont accessibles en localhost : 127.0.0.1
 
+Malheureusement nous n'avons pas reussi a mettre en place nginx, même apres des effort acharné, et même en ayant profiter de l'aide de Monsieur Chomienne
 
 # Liste des routes par micro service
 
@@ -46,7 +50,8 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
 |   GET         |        /getCardByOwner/{ownerId}     |    None        |   ListCardDtoWrapper |
 |   PUT         |       /update/{cardId}     |    CardDto        |   bool |
 |   GET         |       /randcard/{numberOfCard}     |    None        |   ListCardDtoWrapper |
-|   GET         |       /onMarket    |    None        |   ListCardDtoWrapper |
+|   GET         |       /onMarket/{userId}    |    None        |   ListCardDtoWrapper |
+|   GET         |       /cardToSell/{userId}    |    None        |   ListCardDtoWrapper |
 
 
 ## Micro service User
@@ -72,7 +77,7 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
 |   PUT         |       /sellCard/{cardId}/{userid}?price={price}           |    None            |   bool              |
 |   PUT         |       /buyCard/{buyerId}/{cardId}      |    None        |   bool                 |
 |   GET         |       /sell/{userId}     |    None        |   ListCardDtoWrapper                 |
-|   GET         |       /buy     |    None        |   ListCardDtoWrapper |
+|   GET         |       /buy/{userId}     |    None        |   ListCardDtoWrapper |
 
 
 ## Micro service Room
@@ -81,11 +86,11 @@ Tous nos services sont accessibles en localhost : 127.0.0.1
 
 |   Methode     |       URI         |     Body          |   Valeur de retour    |
 | :-----------: |   :-----------:   |   :-----------:   |   :-----------:       |
-|   GET         |       /           |    None            |   List<Room>              |
+|   GET         |       /roomList/{userId}         |    None            |   List<Room>              |
 |   GET         |       /{id}      |    None        |   Room                 |
 |   POST        |       /newRoom/{player1Id}     |    Room        |   Room                 |
 |   PUT         |       /join/{idRoom}?idPlayer={idPlayer}     |    None        |   Room |
-|   PUT         |       /start/{idRoom}     |    ListCardDtoWrapper        |   Room |
+|   PUT         |       /start/{idRoom}?idPlayer={idPlayer}     |    ListCardDtoWrapper        |   Room |
 |   PUT         |        /endOfGame/{idRoom}?winner={winnerId}     |    None        |   bool |
   
   

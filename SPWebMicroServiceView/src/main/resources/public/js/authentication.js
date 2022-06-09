@@ -1,5 +1,3 @@
-monlocalstorage = localStorage;
-
 
 function SendUser() 
 {
@@ -19,17 +17,18 @@ function SendUser()
 	        method: 'POST',
 	        headers: {
 	            'Accept': 'application/json',
-	            'Content-Type': 'application/json', 
-				'Origin': 'Access-Control-Allow-Origin: *'
-
+	            'Content-Type': 'application/json',
 	          },
 	        body: json_obj
 	    })
-		.then(function(reponse) {
-				localStorage.setItem('userId', reponse);
-				window.location = "menu.html";
-				
+		.then( reponse => reponse.json())
+		.then((response) =>{
+			console.log(response)
+			sessionStorage.setItem("userId", response) 
+			window.location = "menu.html"
 		} )
+				
+		
 		.catch(error => alert(error));
 	  }
 	else{
@@ -47,20 +46,22 @@ function send_log()
         
 
     fetch("http://localhost:3082/login", {
-    	method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json', 
-			'Origin': 'Access-Control-Allow-Origin: *'
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+	 	},
+		body: json_obj
+	})
+	.then( reponse => reponse.json())
+	.then((response) =>{
+		console.log(response)
+		sessionStorage.setItem("userId", response) 
+		window.location = "menu.html"
+	} )
 
-          },
-        body: json_obj
-    })
-	.then(function(reponse) {
-			localStorage.setItem('userId', reponse);
-			window.location = "menu.html";
-		} )
-		.catch(error => console.log(error));
+
+	.catch(error => console.log(error));
     
     
 

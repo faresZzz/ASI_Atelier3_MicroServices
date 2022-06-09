@@ -68,6 +68,7 @@ public class TransactionService {
 				buyer.setBank(buyer.getBank() - buyCard.getPrice()); // retire l'argent du compte
 				seller.deleteCard(buyCard.getId()); // retire la carte de la collection 
 				
+				buyCard.setOnMarket(false);
 				buyer.addCard(buyCard.getId());// ajout de la carte a sa collection
 				seller.setBank(seller.getBank() + buyCard.getPrice()); // recredite l'autre compte
 				
@@ -77,9 +78,7 @@ public class TransactionService {
 				Comm.updateUser(buyer);
 				Comm.updateUser(seller);
 				
-				System.out.println(buyCard);
-				System.out.println(buyer);
-				System.out.println(seller);
+				System.out.println(transaction);
 				
 				return true; 
 			
@@ -96,16 +95,16 @@ public class TransactionService {
 		
 		UserDto user = Comm.getUserById(userId);
 		// recupere toutes les carte de l'utilisateurs, on s'occupe de trier coté client
-		List<CardDto> listUserCard = Comm.getCardsByUser(userId);
+		List<CardDto> listUserCard = Comm.getCardsToSell(userId);
 		
 		return listUserCard;
 	}
 
 
 
-	public List<CardDto> displayBuyMarket() {
+	public List<CardDto> displayBuyMarket(int userId) {
 
-		return Comm.getCardOnMarket();
+		return Comm.getCardOnMarket(userId);
 		
 		
 	}
